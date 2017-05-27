@@ -1,4 +1,5 @@
-/* tool bar view */
+/* Top tool bar */
+
 .toolBar {
   width: 100%;
   height: 10vh;
@@ -57,11 +58,11 @@
   height: 218rpx;
 }
 
-/*order cell table */
+/* common table for goods list, consume coupon list, discount coupon list*/
 
 .orderTable {
   width: 100%;
-  height: 90vh;
+  min-height: 50vh;
 }
 
 .tableCell {
@@ -70,38 +71,32 @@
   justify-content: flex-start;
 }
 
+/* left table cell, include three lines(title, starLevel, subtitle) */
+
 .tableCellLeft {
   display: flex;
   width: 70%;
-  height: 156rpx;
+  height: 150rpx;
   padding: 2%;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: column;
 }
 
-.tableCellRight {
-  display: inline-table;
-  flex-grow: 1;
-  width: 22%;
-  height: 156rpx;
-  padding: 2%;
-  text-align: right;
+.leftCellContainer {
+  display: table-row;
+  font-size: 1rem;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  height: 40rpx;
 }
 
 .title {
-  display: table-row;
   font-size: 1rem;
-  padding-top: 6rpx;
-  padding-bottom: 6rpx;
-  height: 40rpx;
 }
 
-.starLevel {
-  display: table-row;
-  font-size: 1rem;
-  padding-top: 6rpx;
-  padding-bottom: 6rpx;
-  height: 40rpx;
+.subTitle {
+  font-size: 0.9rem;
+  color: gray;
 }
 
 .starContainer {
@@ -122,24 +117,31 @@
   height: 25rpx;
 }
 
-.subTitle {
-  display: table-row;
-  font-size: 0.9rem;
-  color: gray;
-  padding-top: 6rpx;
-  padding-bottom: 6rpx;
-  height: 40rpx;
+/* right table cell, include one or two buttons(contact, send) */
+
+.tableCellRight {
+  display: flex;
+  width: 20%;
+  height: 150rpx;
+  padding: 2%;
+  justify-content: space-around;
 }
 
-.sendButtonCell {
-  display: inline-table;
-  padding-right: 10rpx;
+.rightCellContainer {
+  display: flex;
+  height: 96%;
+  width: 47%;
+  align-items: flex-end;
 }
 
-.contactButtonCell {
+.verticalGraySeperationLine{
+  width: 2%;
+  height: 40%;
+  margin-top: 80rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
   display: inline-table;
-  padding-top: 80rpx;
-  padding-left: 10rpx;
+  background-color: lightgray;
 }
 
 .imgSend {
@@ -158,10 +160,59 @@
   background-color: lightgray;
 }
 
+/* footer */
+
 .mjFooter {
   text-align: center;
   color: gray;
   font-size: 0.8rem;
   height: 80rpx;
   padding-top: 40rpx;
+}
+
+/* verificationBar inclue scan QR code button and manual verification button */
+
+.verificationBar {
+  width: 96%;
+  padding: 2%;
+  height: 5vh;
+  background-color: #ed761c;
+  display: flex;
+  justify-content: space-around;
+}
+
+.verificationButtonArea {
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.itemContainer {
+  height: 33rpx;
+  display: inline-table;
+  font-size: 0.8rem;
+  position: relative;
+  top: 50%;
+  margin-top: -16.5rpx;
+}
+
+.verificationButtonArea image {
+  width: 33rpx;
+  height: 33rpx;
+  text-align: right;
+  padding-right: 5rpx;
+}
+
+.verificationButtonArea label {
+  text-align: left;
+  vertical-align: middle;
+  padding-left: 5rpx;
+}
+
+.verticalSeperationLine {
+  background-color: white;
+  width: 2rpx;
+  height: 90%;
+  display: table-column;
 }

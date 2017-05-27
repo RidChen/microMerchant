@@ -15,31 +15,31 @@ Page({
       {
         id: "unpaid",
         title: "待付款",
-        count: 0,
+        count: '0',
         selected: true
       },
       {
         id: "unSend",
         title: "待发货",
-        count: 0,
+        count: '0',
         selected: false
       },
       {
         id: "alreadySent",
         title: "已发货",
-        count: 0,
+        count: '0',
         selected: false
       },
       {
         id: "unConmment",
         title: "待评价",
-        count: 0,
+        count: '0',
         selected: false
       },
       {
         id: "finish",
         title: "已完成",
-        count: 0,
+        count: '0',
         selected: false
       }
     ],
@@ -50,7 +50,7 @@ Page({
       isSendHidden: true,
       footerText: '',
       scrollTop: 0,
-      orderList: {}
+      dataList: {}
     },
 
     pageNum: 1,
@@ -60,11 +60,12 @@ Page({
   },
 
   getGoodsList: function (pageNum, orderStatus) {
+    this.data.pageNum = pageNum <= this.data.totalPage ? pageNum : 1
     var params = URL.getSYSTEM();
 
-    params["pageNum"] = "" + pageNum
-    params["pageSize"] = "" + 20
-    params["orderStatus"] = "" + orderStatus
+    params["pageNum"] = "" + this.data.pageNum
+    params["pageSize"] = '20'
+    params["orderStatus"] = orderStatus
 
     wx.showLoading({
       title: '',
@@ -114,10 +115,12 @@ Page({
           _this.data.barButtons[2].count = _this.data.modelDataList.stateDescription.waitReceiptsNum
           _this.data.barButtons[3].count = _this.data.modelDataList.stateDescription.waitAssessNum
           _this.data.barButtons[4].count = _this.data.modelDataList.stateDescription.overNum
-
-          _this.setData({
-            barButtons: _this.data.barButtons
-          })
+        } else {
+          _this.data.barButtons[0].count = 0
+          _this.data.barButtons[1].count = 0
+          _this.data.barButtons[2].count = 0
+          _this.data.barButtons[3].count = 0
+          _this.data.barButtons[4].count = 0
         }
 
         var hasSendButton = orderStatus == '1' ? false : true
@@ -135,34 +138,36 @@ Page({
 
           if (_this.data.pageNum == 1) {
             _this.setData({
+              barButtons: _this.data.barButtons,
               tableData: {
                 root: root,
                 isSendHidden: hasSendButton,
                 isStarHidden: hasStarButton,
-                barButtons: _this.data.tableData.barButtons,
-                orderList: _this.data.modelDataList.orderList,
+                dataList: _this.data.modelDataList.orderList,
                 scrollTop: 0,
                 footerText: footer
               }
             })
           } else {
             _this.setData({
+              barButtons: _this.data.barButtons,
               tableData: {
+                root: root,
                 isSendHidden: hasSendButton,
                 isStarHidden: hasStarButton,
-                barButtons: _this.data.tableData.barButtons,
-                orderList: _this.data.modelDataList.orderList,
+                dataList: _this.data.modelDataList.orderList,
                 footerText: footer
               }
             })
           }
         } else {
           _this.setData({
+            barButtons: _this.data.barButtons,
             tableData: {
+              root: root,
               isSendHidden: hasSendButton,
               isStarHidden: hasStarButton,
-              barButtons: _this.data.barButtons,
-              orderList: {},
+              dataList: {},
               footerText: footer
             }
           })
@@ -175,7 +180,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getGoodsList(1, 0)
+    this.getGoodsList(1, '0')
   },
 
   /**
@@ -274,11 +279,11 @@ Page({
 
       this.setData({
         tableData: {
+          root: root,
           barButtons: this.data.barButtons
         }
       })
 
-      this.data.pageNum = 1
       this.getGoodsList(1, status)
     }
   },
@@ -286,7 +291,6 @@ Page({
   tapNoDataHandler: function (event) {
     console.log(event.currentTarget.id)
 
-    this.data.pageNum = 1
     this.getGoodsList(1, this.data.currentPageStatus)
   },
 
@@ -322,13 +326,7 @@ Page({
 
   pullUpToTheBottom: function (e) {
     if (this.data.pageNum < this.data.totalPage) {
-      this.data.pageNum += 1
-      this.getGoodsList(this.data.pageNum, this.data.currentPageStatus)
+      this.getGoodsList(++this.data.pageNum, this.data.currentPageStatus)
     }
-  },
-
-  pullDownToReload: function (e) {
-    this.data.pageNum = 1
-    this.getGoodsList(this.data.pageNum, this.data.currentPageStatus)
   }
 })

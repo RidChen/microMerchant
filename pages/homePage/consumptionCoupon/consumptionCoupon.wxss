@@ -3,7 +3,12 @@
 
 .consumptionCouponPage {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+}
+
+.scrollTable {
+  width: 100%;
+  height: 82vh;
 }
 
 .barButton {

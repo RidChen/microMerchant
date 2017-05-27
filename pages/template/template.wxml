@@ -2,10 +2,18 @@
 <template name="tmpToolBar">
   <view class="toolBar">
     <view class="barButton" wx:for="{{barButtons}}" id="{{item.id}}" wx:key="{{item.id}}" bindtap="tapHandler">
-      <view class="selectedLab" wx:if="{{item.selected}}"><label>{{item.title}}</label></view>
-      <view class="unselectedLab" wx:else><label>{{item.title}}</label></view>
-      <view class="selectedLab" wx:if="{{item.selected}}"><label>{{item.count}}</label></view>
-      <view class="unselectedLab" wx:else><label>{{item.count}}</label></view>
+      <view class="selectedLab" wx:if="{{item.selected}}">
+        <label>{{item.title}}</label>
+      </view>
+      <view class="unselectedLab" wx:else>
+        <label>{{item.title}}</label>
+      </view>
+      <view class="selectedLab" wx:if="{{item.selected}}">
+        <label>{{item.count}}</label>
+      </view>
+      <view class="unselectedLab" wx:else>
+        <label>{{item.count}}</label>
+      </view>
       <view class="selected" wx:if="{{item.selected}}"></view>
     </view>
     <view class="unselected"></view>
@@ -14,25 +22,30 @@
 
 
 <template name="tmpGoodsTable">
-  <scroll-view class="orderTable" wx:if="{{orderList.length > 0}}" scroll-y scroll-top="{{scrollTop}}" enable-back-to-top="true" bindscrolltolower="pullUpToTheBottom">
-    <block wx:for="{{orderList}}" wx:key="{{item.orderId}}">
+  <scroll-view class="scrollTable" wx:if="{{dataList.length > 0}}" scroll-y scroll-top="{{scrollTop}}" enable-back-to-top="true" bindscrolltolower="pullUpToTheBottom">
+    <block wx:for="{{dataList}}" wx:key="{{item.orderId}}">
       <view class="tableCell" id="{{index}}" bindtap="tapCellHandler">
         <view class="tableCellLeft">
-          <label class="title">{{item.prdName}}</label>
-          <view class="starLevel">
+          <view class="leftCellContainer">
+            <label class="title">{{item.prdName}}</label>
+          </view>
+          <view class="leftCellContainer">
             <view class="starContainer">
               <view class="eachStar" wx:for="{{item.commentStarNum}}" wx:key="{{item.id}}">
                 <image class="imgStar" src="{{root + 'resource/onlineStore/goodsOrder/xinxin@2x.png'}}" hidden="{{isStarHidden}}"></image>
               </view>
             </view>
           </view>
-          <label class="subTitle">{{item.orderCode}}</label>
+          <view class="leftCellContainer">
+            <label class="subTitle">{{item.orderCode}}</label>
+          </view>
         </view>
         <view class="tableCellRight">
-          <view class="sendButtonCell" id="{{index}}" catchtap="tapSendHandler">
+          <view class="rightCellContainer" id="{{index}}" catchtap="tapSendHandler">
             <image class="imgSend" src="{{root + 'resource/onlineStore/goodsOrder/fahuo@2x.png'}}" hidden="{{isSendHidden}}"></image>
           </view>
-          <view class="contactButtonCell" id="{{index}}" catchtap="tapContactHandler">
+          <view class="verticalGraySeperationLine"></view>
+          <view class="rightCellContainer" id="{{index}}" catchtap="tapContactHandler">
             <image class="contact" src="{{root + 'resource/onlineStore/goodsOrder/lianxi@2x.png'}}"></image>
           </view>
         </view>
@@ -43,7 +56,31 @@
       {{footerText}}
     </view>
   </scroll-view>
-  <view class="noData" wx:if="{{orderList.length == 0}}" bindtap="tapNoDataHandler">
+  <view class="noData" wx:if="{{dataList.length == 0}}" bindtap="tapNoDataHandler">
     <image class="noDataImage" src="{{root + 'resource/onlineStore/goodsOrder/zwsj@2x.png'}}" mode="scaleToFill"></image>
+  </view>
+</template>
+
+<template name="tmpCodeVerificationBar">
+  <view class="verificationBar">
+    <view class="verificationButtonArea" bindtap="tapScanButton">
+      <view class="itemContainer">
+        <image src="{{root + 'resource/onlineStore/consumptionCoupon/sm@2x.png'}}"></image>
+      </view>
+      <view class="itemContainer">
+        <label>扫码验证</label>
+      </view>
+    </view>
+
+    <view class="verticalSeperationLine"></view>
+
+    <view class="verificationButtonArea" bindtap="tapConsumptionButton">
+      <view class="itemContainer">
+        <image src="{{root + 'resource/onlineStore/consumptionCoupon/yz@2x.png'}}"></image>
+      </view>
+      <view class="itemContainer">
+        <label>消费码验证</label>
+      </view>
+    </view>
   </view>
 </template>

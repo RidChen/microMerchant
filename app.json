@@ -11,7 +11,8 @@
     "pages/homePage/consumptionCoupon/consumptionCoupon",
     "pages/homePage/goodsOrder/goodsOrderDetails/goodsOrderDetails",
     "pages/homePage/goodsOrder/fillLogisticsInfo/fillLogisticsInfo",
-    "pages/homePage/goodsManagement/editGoodsInfo/editGoodsInfo"
+    "pages/homePage/goodsManagement/editGoodsInfo/editGoodsInfo",
+    "pages/homePage/consumptionCoupon/manualVerification/manualVerification"
   ],
   "window": {
     "backgroundTextStyle": "light",

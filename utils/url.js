@@ -60,5 +60,7 @@ module.exports = {
   urlGetReplyList: 'store/order/getReplyList',
   urlAddReplay: 'store/order/addReply',
   urlGetGoodsList: 'store/prd/getPrdList',
-  urlUpdateGoodsInfo: 'store/prd/updatePrdInfo'
+  urlUpdateGoodsInfo: 'store/prd/updatePrdInfo',
+  urlGetCousumeList: 'store/consume/getConsumeList',
+  urlValidateConsume: 'store/consume/validateConsume'
 }
