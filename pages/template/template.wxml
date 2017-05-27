@@ -22,7 +22,7 @@
           <view class="starLevel">
             <view class="starContainer">
               <view class="eachStar" wx:for="{{item.commentStarNum}}" wx:key="{{item.id}}">
-                <image class="imgStar" src="{{imgStar}}" hidden="{{isStarHidden}}"></image>
+                <image class="imgStar" src="{{root + 'resource/onlineStore/goodsOrder/xinxin@2x.png'}}" hidden="{{isStarHidden}}"></image>
               </view>
             </view>
           </view>
@@ -30,10 +30,10 @@
         </view>
         <view class="tableCellRight">
           <view class="sendButtonCell" id="{{index}}" catchtap="tapSendHandler">
-            <image class="imgSend" src="{{imgSend}}" hidden="{{isSendHidden}}"></image>
+            <image class="imgSend" src="{{root + 'resource/onlineStore/goodsOrder/fahuo@2x.png'}}" hidden="{{isSendHidden}}"></image>
           </view>
           <view class="contactButtonCell" id="{{index}}" catchtap="tapContactHandler">
-            <image class="contact" src="{{imgContact}}"></image>
+            <image class="contact" src="{{root + 'resource/onlineStore/goodsOrder/lianxi@2x.png'}}"></image>
           </view>
         </view>
       </view>
@@ -44,6 +44,6 @@
     </view>
   </scroll-view>
   <view class="noData" wx:if="{{orderList.length == 0}}" bindtap="tapNoDataHandler">
-    <image class="noDataImage" src="{{imgNoData}}" mode="scaleToFill"></image>
+    <image class="noDataImage" src="{{root + 'resource/onlineStore/goodsOrder/zwsj@2x.png'}}" mode="scaleToFill"></image>
   </view>
 </template>

@@ -45,10 +45,7 @@ Page({
     ],
 
     tableData: {
-      imgNoData: root + 'resource/onlineStore/goodsOrder/zwsj@2x.png',
-      imgSend: root + 'resource/onlineStore/goodsOrder/fahuo@2x.png',
-      imgContact: root + 'resource/onlineStore/goodsOrder/lianxi@2x.png',
-      imgStar: root + 'resource/onlineStore/goodsOrder/xinxin@2x.png',
+      root: root,
       isStarHidden: true,
       isSendHidden: true,
       footerText: '',
@@ -139,6 +136,7 @@ Page({
           if (_this.data.pageNum == 1) {
             _this.setData({
               tableData: {
+                root: root,
                 isSendHidden: hasSendButton,
                 isStarHidden: hasStarButton,
                 barButtons: _this.data.tableData.barButtons,
