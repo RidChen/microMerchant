@@ -1,0 +1,12 @@
+/* activity.wxss */
+.activityPage{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.mainImage{
+  margin-top: 40%;
+  width: 343rpx;
+  height: 386rpx;
+}

@@ -1,0 +1,49 @@
+<!--template.wxml-->
+<template name="tmpToolBar">
+  <view class="toolBar">
+    <view class="barButton" wx:for="{{barButtons}}" id="{{item.id}}" wx:key="{{item.id}}" bindtap="tapHandler">
+      <view class="selectedLab" wx:if="{{item.selected}}"><label>{{item.title}}</label></view>
+      <view class="unselectedLab" wx:else><label>{{item.title}}</label></view>
+      <view class="selectedLab" wx:if="{{item.selected}}"><label>{{item.count}}</label></view>
+      <view class="unselectedLab" wx:else><label>{{item.count}}</label></view>
+      <view class="selected" wx:if="{{item.selected}}"></view>
+    </view>
+    <view class="unselected"></view>
+  </view>
+</template>
+
+
+<template name="tmpGoodsTable">
+  <scroll-view class="orderTable" wx:if="{{orderList.length > 0}}" scroll-y scroll-top="{{scrollTop}}" enable-back-to-top="true" bindscrolltolower="pullUpToTheBottom">
+    <block wx:for="{{orderList}}" wx:key="{{item.orderId}}">
+      <view class="tableCell" id="{{index}}" bindtap="tapCellHandler">
+        <view class="tableCellLeft">
+          <label class="title">{{item.prdName}}</label>
+          <view class="starLevel">
+            <view class="starContainer">
+              <view class="eachStar" wx:for="{{item.commentStarNum}}" wx:key="{{item.id}}">
+                <image class="imgStar" src="{{imgStar}}" hidden="{{isStarHidden}}"></image>
+              </view>
+            </view>
+          </view>
+          <label class="subTitle">{{item.orderCode}}</label>
+        </view>
+        <view class="tableCellRight">
+          <view class="sendButtonCell" id="{{index}}" catchtap="tapSendHandler">
+            <image class="imgSend" src="{{imgSend}}" hidden="{{isSendHidden}}"></image>
+          </view>
+          <view class="contactButtonCell" id="{{index}}" catchtap="tapContactHandler">
+            <image class="contact" src="{{imgContact}}"></image>
+          </view>
+        </view>
+      </view>
+      <view class="separationLine"></view>
+    </block>
+    <view class="mjFooter">
+      {{footerText}}
+    </view>
+  </scroll-view>
+  <view class="noData" wx:if="{{orderList.length == 0}}" bindtap="tapNoDataHandler">
+    <image class="noDataImage" src="{{imgNoData}}" mode="scaleToFill"></image>
+  </view>
+</template>

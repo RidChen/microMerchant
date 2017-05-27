@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/guide/guide",
+    "pages/login/login",
+    "pages/homePage/homePage",
+    "pages/activity/activity",
+    "pages/mine/mine",
+    "pages/homePage/goodsOrder/goodsOrder",
+    "pages/homePage/goodsManagement/goodsManagement",
+    "pages/homePage/discountCoupon/discountCoupon",
+    "pages/homePage/consumptionCoupon/consumptionCoupon",
+    "pages/homePage/goodsOrder/goodsOrderDetails/goodsOrderDetails",
+    "pages/homePage/goodsOrder/fillLogisticsInfo/fillLogisticsInfo",
+    "pages/homePage/goodsManagement/editGoodsInfo/editGoodsInfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/homePage/homePage",
+        "text": "网店",
+        "iconPath": "resource/tabBar/wandian1@2x.png",
+        "selectedIconPath": "resource/tabBar/wandian@2x.png"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "resource/tabBar/huodong1@2x.png",
+        "selectedIconPath": "resource/tabBar/huodong@2x.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "resource/tabBar/wode1@2x.png",
+        "selectedIconPath": "resource/tabBar/wode@2x.png"
+      }
+    ]
+  }
+}

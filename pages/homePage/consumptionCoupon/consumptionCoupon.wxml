@@ -1,0 +1,5 @@
+<!--consumptionCoupon.wxml-->
+<import src="../../template/template.wxml" />
+<view class="consumptionCouponPage">
+  <template is="tmpToolBar" data="{{barButtons: barButtons}}" />
+</view>

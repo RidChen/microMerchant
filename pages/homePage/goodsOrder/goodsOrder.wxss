@@ -1,0 +1,12 @@
+/* goodsOrder.wxss */
+
+@import '../../template/template.wxss';
+
+.goodsOrderPage {
+  width: 100%;
+  height: 100vh;
+}
+
+.barButton {
+  width: 20%;
+}

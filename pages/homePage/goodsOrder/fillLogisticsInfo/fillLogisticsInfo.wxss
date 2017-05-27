@@ -1,0 +1,90 @@
+/* fillLogisticsInfo.wxss */
+.fillLogisticsInfoPage{
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f9;
+}
+
+.logisticsMerchant{
+  background-color: white;
+  padding: 2%;
+  padding-bottom: 0;
+}
+
+.logisticsUrl{
+  background-color: white;
+  padding: 2%;
+  padding-bottom: 0;
+}
+
+.logisticsCode{
+  background-color: white;
+  padding: 2%;
+  padding-bottom: 0;
+}
+
+.submitArea{
+  background-color: white;
+}
+
+.title{
+  font-size: 1rem;
+  margin: 2%;
+}
+
+.inputContainer{
+  width: 96%;
+  font-size: 0.9rem;
+  margin: 2%;
+  height: 60rpx;
+}
+
+.inputArea{
+  display: inline-table;
+  width: 60%;
+}
+
+.selectArea{
+  width: 36vw;
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.logisticsPicker{
+  width: 36%;
+  display: inline-table;
+}
+
+.imgArrow{
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.redStar{
+  color: red;
+}
+
+.empty {
+  width: 100%;
+  height: 20rpx;
+  background-color: #f5f5f9;
+}
+
+.separationLine {
+  width: 100%;
+  height: 2rpx;
+  background-color: #f5f5f9;
+}
+
+.submitArea{
+  width: 100%;
+  text-align: center;
+  background-color: #f5f5f9;
+}
+
+.submitBtn{
+  size: 'default';
+  color: white;
+  background-color: #ed761c;
+  width: 90%;
+}

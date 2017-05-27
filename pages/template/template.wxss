@@ -1,0 +1,167 @@
+/* tool bar view */
+.toolBar {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.barButton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+}
+
+.selectedLab {
+  width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.6rem;
+  color: #ed761c;
+}
+
+.unselectedLab {
+  width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.6rem;
+  color: black;
+}
+
+.selected {
+  width: 90%;
+  height: 2px;
+  background-color: #ed761c;
+  margin: 0 auto;
+}
+
+.unselected {
+  width: 100%;
+  height: 1px;
+  background-color: lightgray;
+}
+
+/* no data view */
+
+.noData {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top: 40%;
+}
+
+.noDataImage {
+  width: 194rpx;
+  height: 218rpx;
+}
+
+/*order cell table */
+
+.orderTable {
+  width: 100%;
+  height: 90vh;
+}
+
+.tableCell {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.tableCellLeft {
+  display: flex;
+  width: 70%;
+  height: 156rpx;
+  padding: 2%;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.tableCellRight {
+  display: inline-table;
+  flex-grow: 1;
+  width: 22%;
+  height: 156rpx;
+  padding: 2%;
+  text-align: right;
+}
+
+.title {
+  display: table-row;
+  font-size: 1rem;
+  padding-top: 6rpx;
+  padding-bottom: 6rpx;
+  height: 40rpx;
+}
+
+.starLevel {
+  display: table-row;
+  font-size: 1rem;
+  padding-top: 6rpx;
+  padding-bottom: 6rpx;
+  height: 40rpx;
+}
+
+.starContainer {
+  width: 70%;
+  display: flex;
+  padding: 1%;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.eachStar {
+  padding-right: 10rpx;
+  display: table-column;
+}
+
+.imgStar {
+  width: 25rpx;
+  height: 25rpx;
+}
+
+.subTitle {
+  display: table-row;
+  font-size: 0.9rem;
+  color: gray;
+  padding-top: 6rpx;
+  padding-bottom: 6rpx;
+  height: 40rpx;
+}
+
+.sendButtonCell {
+  display: inline-table;
+  padding-right: 10rpx;
+}
+
+.contactButtonCell {
+  display: inline-table;
+  padding-top: 80rpx;
+  padding-left: 10rpx;
+}
+
+.imgSend {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.contact {
+  width: 76rpx;
+  height: 76rpx;
+}
+
+.separationLine {
+  width: 100%;
+  height: 2rpx;
+  background-color: lightgray;
+}
+
+.mjFooter {
+  text-align: center;
+  color: gray;
+  font-size: 0.8rem;
+  height: 80rpx;
+  padding-top: 40rpx;
+}

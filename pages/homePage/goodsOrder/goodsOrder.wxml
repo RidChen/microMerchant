@@ -1,0 +1,6 @@
+<!--goodsOrder.wxml-->
+<import src="../../template/template.wxml" />
+<view class="goodsOrderPage">
+  <template is="tmpToolBar" data="{{barButtons: barButtons}}" />
+  <template is="tmpGoodsTable" data="{{...tableData}}" />
+</view>

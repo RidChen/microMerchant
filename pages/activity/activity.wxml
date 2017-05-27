@@ -1,0 +1,4 @@
+<!--activity.wxml-->
+<view class="activityPage">
+    <image class="mainImage" src="{{src}}"></image>
+</view>

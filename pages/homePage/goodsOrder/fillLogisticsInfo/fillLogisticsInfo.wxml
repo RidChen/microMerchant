@@ -1,0 +1,55 @@
+<!--fillLogisticsInfo.wxml-->
+<view class="fillLogisticsInfoPage">
+  <view class="logisticsMerchant">
+    <view class="title">
+      <label>物流商家</label>
+      <label class="redStar">*</label>
+    </view>
+    <view class="separationLine"></view>
+    <view class="inputContainer">
+      <view class="inputArea">
+        <input placeholder="选择或输入包裹承运商" value="{{logisticsName}}" bindinput="logisticsNameInputHandler"/>
+      </view>
+
+      <view class="logisticsPicker">
+        <picker bindchange="listenerPickerSelected" value="{{index}}" range="{{logisticsStrArr}}">
+          <view class="selectArea">
+            <image class="imgArrow" src="{{imgRightArrow}}"></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+  </view>
+  <view class="empty"></view>
+
+  <view class="logisticsUrl">
+    <view class="title">
+      <label>物流查询网址</label>
+      <label class="redStar">*</label>
+    </view>
+    <view class="separationLine"></view>
+    <view class="inputContainer">
+      <input placeholder="输入查询物流信息的网址" value="{{logisticsURL}}" bindinput="logisticsURLInputHandler"/>
+    </view>
+    <view class="separationLine"></view>
+  </view>
+
+  <view class="logisticsCode">
+    <view class="title">
+      <label>物流运单号</label>
+      <label class="redStar">*</label>
+    </view>
+    <view class="separationLine"></view>
+    <view class="inputContainer">
+      <input placeholder="输入物流运单号" bindinput="logisticsCodeInputHandler"/>
+    </view>
+    <view class="separationLine"></view>
+  </view>
+
+  <view class="empty"></view>
+
+  <view class="submitArea">
+    <button class="submitBtn" loading="{{btnLoading}}" bindtap="tapSubmitHandler">提交</button>
+  </view>
+</view>

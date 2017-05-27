@@ -1,0 +1,6 @@
+<!--homePage.wxml-->
+<view class="homePage">
+  <view class="cell" wx:for="{{items}}" wx:key="{{item.id}}" bindtap="tapHandler" id="{{item.id}}">
+    <image class="cellIcon" mode="scaleToFill" src="{{item.src}}"></image>
+  </view>
+</view>

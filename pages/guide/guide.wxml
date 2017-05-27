@@ -1,0 +1,4 @@
+<!--guide.wxml-->
+<scroll-view class="guidePage" animation="{{animationData}}">
+  <image class="mainImage" src="{{src}}" mode="scaleToFill"></image>
+</scroll-view>

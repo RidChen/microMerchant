@@ -1,0 +1,25 @@
+/* mine.wxss */
+.minePage{
+  width: 100%;
+  text-align: center;
+}
+
+.mineView{
+  width: 90%;
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+.label{
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  display: block;
+  text-align: left;
+}
+
+.logoutBtn{
+  size: 'default';
+  color: white;
+  background-color: #ED761C;
+}

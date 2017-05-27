@@ -1,0 +1,76 @@
+/* login.wxss */
+
+.loginPage {
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.logoView {
+  text-align: center;
+  margin-top: 100rpx;
+  margin-bottom: 100rpx;
+  height: 30%;
+}
+
+.logoImage {
+  width: 270rpx;
+  height: 77rpx;
+}
+
+.loginForm {
+  width: 90%;
+}
+
+.label {
+  display: inline-block;
+  width: 80px;
+  text-align: right;
+}
+
+.container {
+  padding: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.row text {
+  text-align: right;
+}
+
+.row input {
+  font-size: 'default';
+  flex-grow: 1;
+  border: 1px solid #09c;
+  display: inline-block;
+  border-radius: 0.3rem;
+  box-shadow: 0 0 0.15rem #aaa;
+  padding: 0.3rem;
+}
+
+.loginBtn {
+  size: 'default';
+  color: white;
+  background-color: #ed761c;
+}
+
+.loginBtn text {
+  background-color: white;
+}
+
+.bgImageView {
+  text-align: center;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.bgImage {
+  width: 640rpx;
+  height: 308rpx;
+}

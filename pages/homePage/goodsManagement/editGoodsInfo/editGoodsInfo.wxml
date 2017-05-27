@@ -1,0 +1,54 @@
+<!--editGoodsInfo.wxml-->
+<view class="editGoodsInfoPage">
+  <form bindsubmit="tapSaveHandler">
+    <view class="editGoodsContainer">
+      <view class="detailsCell">
+        <view class="detailsSubTitle">
+          <label>商品名称：</label>
+        </view>
+        <view class="detailsInfo">
+          <input placeholder="请输入商品名称" name="name" value="{{name}}" />
+        </view>
+      </view>
+      <view class="separationLine"></view>
+
+      <view class="detailsCell">
+        <view class="detailsSubTitle">
+          <label>商品价格：</label>
+        </view>
+        <view class="detailsInfo">
+          <input placeholder="请输入商品价格(元)" name="price" type="digit" value="{{price}}" />
+        </view>
+      </view>
+      <view class="separationLine"></view>
+
+      <view class="detailsCell">
+        <view class="detailsSubTitle">
+          <label>商品折扣：</label>
+        </view>
+        <view class="detailsInfo">
+          <view class="inputArea">
+            <input placeholder="请输入商品折扣(0~10)" type="digit" name="discount" bindinput="inputDiscount" value="{{discount}}" />
+          </view>
+          <view class="discountUnit">
+            <label>折</label>
+          </view>
+        </view>
+      </view>
+      <view class="separationLine"></view>
+
+      <view class="detailsCell">
+        <view class="detailsSubTitle">
+          <label>商品库存：</label>
+        </view>
+        <view class="detailsInfo">
+          <input placeholder="请输入整数" name="totalStock" type="number" value="{{totalStock}}" />
+        </view>
+      </view>
+    </view>
+
+    <view class="saveBtnArea">
+      <button class="saveBtn" formType="submit">保存</button>
+    </view>
+  </form>
+</view>

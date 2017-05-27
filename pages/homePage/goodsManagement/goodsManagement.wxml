@@ -1,0 +1,21 @@
+<!--goodsManagement.wxml-->
+<view class="goodsManagementPage">
+
+  <view class="goodsTable">
+    <block wx:for="{{goodsList}}" wx:key="{{item.id}}">
+      <view class="tableCell" id="{{index}}">
+        <view class="tableCellLeft">
+          <label class="title">{{item.name}}</label>
+          <label class="subTitle">{{item.scName}}</label>
+        </view>
+        <view class="tableCellRight" id="{{index}}" bindtap="tapEditHandler">
+          <image class="imgEdit" src="{{imgEdit}}"></image>
+        </view>
+      </view>
+      <view class="separationLine"></view>
+    </block>
+    <view class="mjFooter">
+      {{footerText}}
+    </view>
+  </view>
+</view>
