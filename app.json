@@ -12,7 +12,7 @@
     "pages/homePage/goodsOrder/goodsOrderDetails/goodsOrderDetails",
     "pages/homePage/goodsOrder/fillLogisticsInfo/fillLogisticsInfo",
     "pages/homePage/goodsManagement/editGoodsInfo/editGoodsInfo",
-    "pages/homePage/consumptionCoupon/manualVerification/manualVerification"
+    "pages/homePage/components/manualVerification/manualVerification"
   ],
   "window": {
     "backgroundTextStyle": "light",

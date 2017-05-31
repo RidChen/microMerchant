@@ -11,9 +11,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputValue: '输入消费码进行验证',
-    textAlign: 'center',
-    isCleanButtonHidden: true,
+    verificationData: {
+      root: root,
+      inputValue: '输入消费码进行验证',
+      textAlign: 'center',
+      isCleanButtonHidden: true,
+    },
     touchStartTime: 0,
     touchEndTime: 0
   },
@@ -77,16 +80,18 @@ Page({
   tapNumber: function (e) {
     console.log('touch number ' + e.currentTarget.id)
 
-    if (this.data.inputValue == '输入消费码进行验证') {
-      this.data.inputValue = e.currentTarget.id;
+    if (this.data.verificationData.inputValue == '输入消费码进行验证') {
+      this.data.verificationData.inputValue = e.currentTarget.id;
     } else {
-      this.data.inputValue += e.currentTarget.id;
+      this.data.verificationData.inputValue += e.currentTarget.id;
     }
 
     this.setData({
-      inputValue: util.formatCouponCode(this.data.inputValue),
-      textAlign: 'left',
-      isCleanButtonHidden: false
+      verificationData: {
+        inputValue: util.formatCouponCode(this.data.verificationData.inputValue),
+        textAlign: 'left',
+        isCleanButtonHidden: false
+      }
     })
   },
 
@@ -96,13 +101,15 @@ Page({
     //如果按下时间大于350为长按 
     if (touchTime > 350) {
       this.setData({
-        inputValue: '输入消费码进行验证',
-        textAlign: 'center',
-        isCleanButtonHidden: true
+        verificationData: {
+          inputValue: '输入消费码进行验证',
+          textAlign: 'center',
+          isCleanButtonHidden: true
+        }
       })
     } else {
-      if (this.data.inputValue.length > 0) {
-        var newStr = this.data.inputValue.replace(/\s/g, '')
+      if (this.data.verificationData.inputValue.length > 0) {
+        var newStr = this.data.verificationData.inputValue.replace(/\s/g, '')
         var isHidden = false
         var align = 'left'
 
@@ -115,9 +122,11 @@ Page({
           newStr = util.formatCouponCode(newStr)
         }
         this.setData({
-          inputValue: newStr,
-          textAlign: align,
-          isCleanButtonHidden: isHidden
+          verificationData: {
+            inputValue: newStr,
+            textAlign: align,
+            isCleanButtonHidden: isHidden
+          }
         })
       }
     }
@@ -136,10 +145,10 @@ Page({
   },
 
   tapSubmit: function (e) {
-    if (this.data.inputValue.length > 0) {
+    if (this.data.verificationData.inputValue.length > 0) {
       var params = URL.getSYSTEM();
 
-      params["consumeCode"] = this.data.inputValue.replace(/\s/g, '')
+      params["consumeCode"] = this.data.verificationData.inputValue.replace(/\s/g, '')
 
       wx.showLoading({
         title: '',

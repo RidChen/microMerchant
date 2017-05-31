@@ -1,10 +1,10 @@
 <!--manualVerification.wxml-->
-<view class="manualVerificationPage">
+<template name="tmpManualVerification">
   <view class="inputArea">
     <view class="inputFrame" style="text-align: {{textAlign}};">
       <text>{{inputValue}}</text>
       <view class="cleanButton" hidden="{{isCleanButtonHidden}}" bindtap="tapClean" bindtouchstart="touchStart" bindtouchend="touchEnd">
-        <image src="../../../../resource/onlineStore/consumptionCoupon/sc@2x.png"></image>
+        <image src="{{root + 'resource/onlineStore/consumptionCoupon/sc@2x.png'}}"></image>
       </view>
     </view>
   </view>
@@ -18,4 +18,8 @@
       验 证
     </view>
   </view>
+</template>
+
+<view class="manualVerificationPage">
+  <template is="tmpManualVerification" data="{{...verificationData}}"></template>
 </view>

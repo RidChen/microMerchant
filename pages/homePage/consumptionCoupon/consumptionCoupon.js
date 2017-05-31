@@ -105,7 +105,7 @@ Page({
   tapHandler: function (event) {
     console.log(event.currentTarget.id)
 
-    var status
+    var status = ''
 
     switch (event.currentTarget.id) {
       case 'unused':
@@ -229,7 +229,7 @@ Page({
 
   tapConsumptionButton: function (event) {
     wx.navigateTo({
-      url: root + 'pages/homePage/consumptionCoupon/manualVerification/manualVerification',
+      url: root + 'pages/homePage/components/manualVerification/manualVerification',
     })
   },
 

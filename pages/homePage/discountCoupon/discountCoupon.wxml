@@ -1,2 +1,7 @@
 <!--discountCoupon.wxml-->
-<text>discountCoupon.wxml</text>
+<import src="../../template/template.wxml" />
+<view class="discountCouponPage">
+  <template is="tmpCodeVerificationBar" data="{{root: root}}"></template>
+  <template is="tmpToolBar" data="{{barButtons: barButtons}}" />
+  <template is="tmpGoodsTable" data="{{...tableData}}"></template>
+</view>
