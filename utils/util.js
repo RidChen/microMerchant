@@ -16,6 +16,33 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function formatCouponCode(str) {
+  if (str == undefined) return str;
+
+  str = str.replace(/\s/g, '');
+  if (str.length > 12) {
+    str = str.substring(0, 12)
+  }
+
+  if (str.length <= 4) {
+    return str
+  } else {
+    var newStr = str.substring(0, 4)
+    newStr += '  '
+    var leftStr = str.substring(4)
+
+    if (leftStr.length <= 4) {
+      newStr += leftStr
+    } else {
+      newStr += leftStr.substring(0, 4)
+      newStr += '  '
+      newStr += leftStr.substring(4)
+    }
+
+    return newStr
+  }
+}
+
 function obj2string(o) {
   var r = [];
   if (typeof o == "string") {
@@ -83,5 +110,6 @@ module.exports = {
   formatTime: formatTime,
   obj2string: obj2string,
   isEmptyObject: isEmptyObject,
-  dateDiff: dateDiff
+  dateDiff: dateDiff,
+  formatCouponCode: formatCouponCode
 }

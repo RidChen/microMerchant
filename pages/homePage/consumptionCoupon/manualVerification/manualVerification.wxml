@@ -1,2 +1,21 @@
 <!--manualVerification.wxml-->
-<text>manualVerification.wxml</text>
+<view class="manualVerificationPage">
+  <view class="inputArea">
+    <view class="inputFrame" style="text-align: {{textAlign}};">
+      <text>{{inputValue}}</text>
+      <view class="cleanButton" hidden="{{isCleanButtonHidden}}" bindtap="tapClean" bindtouchstart="touchStart" bindtouchend="touchEnd">
+        <image src="../../../../resource/onlineStore/consumptionCoupon/sc@2x.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="numberPadArea">
+    <view class="numbers" wx:for="{{[1,2,3,4,5,6,7,8,9,0]}}" wx:key="item" wx:for-item="i">
+      <view class="number" id="{{i}}" bindtap="tapNumber">
+        {{i}}
+      </view>
+    </view>
+    <view class="verifyButton" bindtap="tapSubmit">
+      验 证
+    </view>
+  </view>
+</view>
