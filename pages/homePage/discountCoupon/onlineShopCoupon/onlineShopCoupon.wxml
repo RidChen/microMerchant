@@ -1,0 +1,7 @@
+<!--onlineShopCoupon.wxml-->
+<import src="../../../template/template.wxml" />
+<view class="onlineShopCouponPage">
+  <template is="tmpCodeVerificationBar" data="{{root: root, title: '优惠码'}}"></template>
+  <template is="tmpToolBar" data="{{barButtons: barButtons}}" />
+  <template is="tmpGoodsTable" data="{{...tableData}}"></template>
+</view>

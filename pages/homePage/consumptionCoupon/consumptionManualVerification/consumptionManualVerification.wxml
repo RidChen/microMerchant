@@ -1,0 +1,5 @@
+<!--consumptionManualVerification.wxml-->
+<import src="../../../template/template.wxml" />
+<view class="consumptionManualVerificationPage">
+  <template is="tmpManualVerification" data="{{...verificationData}}"></template>
+</view>

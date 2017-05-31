@@ -62,5 +62,8 @@ module.exports = {
   urlGetGoodsList: 'store/prd/getPrdList',
   urlUpdateGoodsInfo: 'store/prd/updatePrdInfo',
   urlGetCousumeList: 'store/consume/getConsumeList',
-  urlValidateConsume: 'store/consume/validateConsume'
+  urlValidateConsume: 'store/consume/validateConsume',
+  urlGetListByType: 'store/coupon/getListByType',
+  urlGetCouponInfo: 'store/coupon/getCouponInfo',
+  urlGetListByStatus: 'store/coupon/getListByStatus',
 }

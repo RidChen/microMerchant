@@ -11,14 +11,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    touchStartTime: 0,
+    touchEndTime: 0,
     verificationData: {
       root: root,
       inputValue: '输入消费码进行验证',
       textAlign: 'center',
       isCleanButtonHidden: true,
-    },
-    touchStartTime: 0,
-    touchEndTime: 0
+    }
   },
 
   /**

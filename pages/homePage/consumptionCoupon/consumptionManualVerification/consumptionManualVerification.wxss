@@ -1,0 +1,17 @@
+/* consumptionManualVerification.wxss */
+@import '../../../template/template.wxss';
+
+.consumptionManualVerificationPage {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f9;
+}
+
+.barButton {
+  width: 50%;
+}
+
+.scrollTable {
+  width: 100%;
+  height: 90vh;
+}

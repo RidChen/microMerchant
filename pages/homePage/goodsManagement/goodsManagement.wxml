@@ -1,6 +1,5 @@
 <!--goodsManagement.wxml-->
 <view class="goodsManagementPage">
-
   <view class="goodsTable">
     <block wx:for="{{goodsList}}" wx:key="{{item.id}}">
       <view class="tableCell" id="{{index}}">

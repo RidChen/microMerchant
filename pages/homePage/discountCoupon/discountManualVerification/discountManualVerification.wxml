@@ -1,0 +1,5 @@
+<!--discountManualVerification.wxml-->
+<import src="../../../template/template.wxml" />
+<view class="discountManualVerificationPage">
+  <template is="tmpManualVerification" data="{{...verificationData}}"></template>
+</view>

@@ -44,7 +44,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.getDiscountInfo(1, '0')
   },
 
   /**
@@ -96,6 +96,92 @@ Page({
   
   },
 
+  getDiscountInfo: function (pageNum, couponType) {
+    this.data.pageNum = pageNum <= this.data.totalPage ? pageNum : 1
+
+    var params = URL.getSYSTEM();
+
+    params["pageNum"] = "" + this.data.pageNum
+    params["pageSize"] = "" + 20
+    params["couponType"] = "" + couponType
+
+    wx.showLoading({
+      title: '',
+      mask: true
+    })
+
+    var _this = this
+    networkManager.post({
+      url: URL.init(URL.urlRoot, URL.urlGetListByType).getURL(app.globalData.wsjUserInfo.token),
+      data: params,
+      success: function (res) {
+        var model = JSON.parse(res.data)
+
+        if (model.data != undefined) {
+          console.log(util.obj2string(model.data))
+        } else {
+          console.log(model)
+        }
+
+        if ('000000' == model.code) {
+          _this.data.totalPage = parseInt(model.data.totalPage)
+          _this.data.barButtons[0].count = model.data.typeDescription.storeNum
+          _this.data.barButtons[1].count = model.data.typeDescription.lineNum
+
+          var footer = (_this.data.pageNum == _this.data.totalPage) ? '加载完成' : '正在加载更多数据...'
+
+          if (this.data.pageNum == 1) {
+            _this.setData({
+              barButtons: _this.data.barButtons,
+              tableData: {
+                root: root,
+                dataList: model.data.couponList,
+                scrollTop: 0,
+                footerText: footer
+              }
+            })
+          } else {
+            if (model.data.consumeList != undefined) {
+              _this.data.tableData.dataList = _this.data.tableData.dataList.concat(model.data.couponList)
+              _this.setData({
+                barButtons: _this.data.barButtons,
+                tableData: {
+                  root: root,
+                  dataList: _this.data.tableData.dataList,
+                  footerText: footer
+                }
+              })
+            }
+          }
+        } else {
+          _this.data.tableData.dataList = []
+          wx.showToast({
+            title: model.msg,
+            image: root + 'resource/common/gb@2x.png',
+            duration: 2000
+          })
+        }
+      },
+      fail: function (res) {
+        console.log(res)
+        wx.showToast({
+          title: '网络异常',
+          image: root + 'resource/common/gb@2x.png',
+          duration: 2000
+        })
+      },
+      complete: function (res) {
+        wx.hideLoading()
+      }
+    })
+  },
+
+  pullUpToTheBottom: function (event) {
+    if (this.data.pageNum < this.data.totalPage) {
+      this.getDiscountInfo(++this.data.pageNum, this.data.currentPageStatus)
+    }
+  },
+
   tapHandler: function (event) {
     console.log(event.currentTarget.id)
 
@@ -129,14 +215,14 @@ Page({
         barButtons: this.data.barButtons
       })
 
-      // this.getConsumeList(1, status)
+      this.getDiscountInfo(1, status)
     }
   },
 
   tapNoDataHandler: function (event) {
     console.log(event.currentTarget.id)
 
-    // this.getConsumeList(1, this.data.currentPageStatus)
+    this.getDiscountInfo(1, this.data.currentPageStatus)
   },
 
   tapScanButton: function (event) {
@@ -150,11 +236,11 @@ Page({
 
           var result = JSON.parse(res.result)
 
-          if (result.type == '2' && result.code != undefined
+          if (result.type == '1' && result.code != undefined
             && result.code.length != 0) {
             var params = URL.getSYSTEM();
 
-            params["consumeCode"] = result.code
+            params["couponCode"] = result.code
 
             wx.showLoading({
               title: '',
@@ -163,7 +249,7 @@ Page({
 
             var _this = this
             networkManager.post({
-              url: URL.init(URL.urlRoot, URL.urlValidateConsume).getURL(app.globalData.wsjUserInfo.token),
+              url: URL.init(URL.urlRoot, URL.urlGetCouponInfo).getURL(app.globalData.wsjUserInfo.token),
               data: params,
               success: function (res) {
                 var model = JSON.parse(res.data)
@@ -215,10 +301,20 @@ Page({
       }
     })
   },
-  
-  tapConsumptionButton: function (event) {
+
+  tapVerificationButton: function (event) {
     wx.navigateTo({
-      url: root + 'pages/homePage/components/manualVerification/manualVerification',
+      url: root + 'pages/homePage/discountCoupon/discountManualVerification/discountManualVerification',
     })
   },
+
+  tapCellHandler: function (event) {
+    console.log('tap the cell:' + event.currentTarget.id)
+
+    if (this.data.tableData.dataList[event.currentTarget.id].couponId != undefined) {
+      wx.navigateTo({
+        url: root + 'pages/homePage/discountCoupon/onlineShopCoupon/onlineShopCoupon?couponId=' + this.data.tableData.dataList[event.currentTarget.id].couponId + '&&status=' + this.data.currentPageStatus,
+      })
+    }
+  }
 })

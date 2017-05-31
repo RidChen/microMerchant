@@ -74,13 +74,71 @@
 
     <view class="verticalSeperationLine"></view>
 
-    <view class="verificationButtonArea" bindtap="tapConsumptionButton">
+    <view class="verificationButtonArea" bindtap="tapVerificationButton">
       <view class="itemContainer">
         <image src="{{root + 'resource/onlineStore/consumptionCoupon/yz@2x.png'}}"></image>
       </view>
       <view class="itemContainer">
-        <label>消费码验证</label>
+        <label>{{title}}验证</label>
       </view>
     </view>
+  </view>
+</template>
+
+<template name="tmpManualVerification">
+  <view class="inputArea">
+    <view class="inputFrame" style="text-align: {{textAlign}};">
+      <text>{{inputValue}}</text>
+      <view class="cleanButton" hidden="{{isCleanButtonHidden}}" bindtap="tapClean" bindtouchstart="touchStart" bindtouchend="touchEnd">
+        <image src="{{root + 'resource/onlineStore/consumptionCoupon/sc@2x.png'}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class="numberPadArea">
+    <view class="numbers" wx:for="{{[1,2,3,4,5,6,7,8,9,0]}}" wx:key="item" wx:for-item="i">
+      <view class="number" id="{{i}}" bindtap="tapNumber">
+        {{i}}
+      </view>
+    </view>
+    <view class="verifyButton" bindtap="tapSubmit">
+      验 证
+    </view>
+  </view>
+</template>
+
+<template name="tmpDiscountTable">
+  <scroll-view class="scrollTable" wx:if="{{dataList.length > 0}}" scroll-y scroll-top="{{scrollTop}}" enable-back-to-top="true" bindscrolltolower="pullUpToTheBottom">
+    <block wx:for="{{dataList}}" wx:key="{{item.couponId}}">
+      <view class="tableCell" id="{{index}}" bindtap="tapCellHandler">
+        <view class="discountTableCellLeft">
+          <view class="leftCellContainer">
+            <label class="title">{{item.couponName}}</label>
+          </view>
+          <view class="leftCellContainer">
+          </view>
+          <view class="leftCellContainer">
+            <label class="subTitle">参与人数：{{item.userNum}}人</label>
+          </view>
+        </view>
+        <view class="discountTableCellRight">
+          <view class="discountRightCellContainer" wx:if="{{item.category == '1'}}">
+            <image class="discountTypeImg" src="{{root + 'resource/onlineStore/discountCoupon/xianjin@2x.png'}}"></image>
+          </view>
+          <view class="discountRightCellContainer" wx:if="{{item.category == '0'}}">
+            <image class="discountTypeImg" src="{{root + 'resource/onlineStore/discountCoupon/youhui@2x.png'}}"></image>
+          </view>
+          <view class="discountRightCellContainer">
+            <image class="discountTypeRightArrow" src="{{root + 'resource/onlineStore/discountCoupon/dongt@2x.png'}}"></image>
+          </view>
+        </view>
+      </view>
+      <view class="separationLine"></view>
+    </block>
+    <view class="mjFooter">
+      {{footerText}}
+    </view>
+  </scroll-view>
+  <view class="noData" wx:if="{{dataList.length == 0}}" bindtap="tapNoDataHandler">
+    <image class="noDataImage" src="{{root + 'resource/onlineStore/goodsOrder/zwsj@2x.png'}}" mode="scaleToFill"></image>
   </view>
 </template>

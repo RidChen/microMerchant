@@ -216,3 +216,114 @@
   height: 90%;
   display: table-column;
 }
+
+/* manual verification */
+.inputArea {
+  height: 200rpx;
+  width: 90%;
+  padding: 5%;
+  background-color: #ed761c;
+  display: flex;
+}
+
+.inputFrame {
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
+  height: 120rpx;
+  margin-top: 40rpx;
+  line-height: 120rpx;
+  overflow: hidden;
+  color: white;
+  background-color: #d0692c;
+  border-radius: 20rpx;
+  position: relative;
+}
+
+.cleanButton {
+  height: 56rpx;
+  width: 56rpx;
+  position: absolute;
+  top: 18rpx;
+  right: 4%;
+}
+
+.cleanButton image {
+  height: 56rpx;
+  width: 56rpx;
+}
+
+.numberPadArea {
+  margin-top: 40rpx;
+  width: 92%;
+  padding: 4%;
+  background-color: #f5f5f9;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  justify-content: center;
+}
+
+.numbers {
+  height: 160rpx;
+  width: 160rpx;
+  line-height: 160rpx;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 80px;
+  margin: 20rpx;
+}
+
+.number {
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.verifyButton {
+  width: 360rpx;
+  height: 160rpx;
+  line-height: 160rpx;
+  overflow: hidden;
+  color: white;
+  background-color: #ed761c;
+  border-radius: 100px;
+  margin: 20rpx;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* discount coupon table */
+.discountTableCellLeft {
+  display: flex;
+  width: 70%;
+  height: 150rpx;
+  padding: 2%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.discountTableCellRight {
+  display: flex;
+  width: 20%;
+  padding: 2%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: right;
+}
+
+.discountRightCellContainer {
+  height: 46%;
+}
+
+.discountTypeImg {
+  width: 80rpx;
+  height: 30rpx;
+}
+
+.discountTypeRightArrow {
+  width: 20rpx;
+  height: 20rpx;
+  margin-top: 60rpx;
+}

@@ -1,0 +1,16 @@
+/* onlineShopCoupon.wxss */
+@import '../../../template/template.wxss';
+
+.onlineShopCouponPage {
+  width: 100%;
+  height: 100vh;
+}
+
+.scrollTable {
+  width: 100%;
+  height: 82vh;
+}
+
+.barButton {
+  width: 50%;
+}
