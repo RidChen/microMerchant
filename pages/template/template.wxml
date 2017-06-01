@@ -142,3 +142,30 @@
     <image class="noDataImage" src="{{root + 'resource/onlineStore/goodsOrder/zwsj@2x.png'}}" mode="scaleToFill"></image>
   </view>
 </template>
+
+<template name="tmpDiscountTableByStatus">
+  <view class="scrollTable" wx:if="{{dataList.length > 0}}">
+    <block wx:for="{{dataList}}" wx:key="{{item.userCouponId}}">
+      <view class="tableCell" id="{{index}}" bindtap="tapCellHandler">
+        <view class="tableCellLeft">
+          <view class="leftCellContainer">
+            <label class="title">{{item.couponName}}</label>
+          </view>
+        </view>
+        <view class="tableCellRight">
+          <view class="verticalGraySeperationLine"></view>
+          <view class="rightCellContainer" id="{{index}}" catchtap="tapContactHandler">
+            <image class="contact" src="{{root + 'resource/onlineStore/goodsOrder/lianxi@2x.png'}}"></image>
+          </view>
+        </view>
+      </view>
+      <view class="separationLine"></view>
+    </block>
+    <view class="mjFooter">
+      {{footerText}}
+    </view>
+  </view>
+  <view class="noData" wx:if="{{dataList.length == 0}}" bindtap="tapNoDataHandler">
+    <image class="noDataImage" src="{{root + 'resource/onlineStore/goodsOrder/zwsj@2x.png'}}" mode="scaleToFill"></image>
+  </view>
+</template>

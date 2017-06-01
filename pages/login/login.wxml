@@ -7,20 +7,20 @@
   </view>
 
   <view class="container">
-  <form class="loginForm" bindsubmit="formSubmit">
-    <view class="row">
-      <!--<text>用户名：</text>-->
-      <label class="label">用户名：</label>
-      <input type="text" name="userName" placeholder="输入账号/手机号" />
-    </view>
-    <view class="row">
-      <!--<text>密码：</text>-->
-      <label class="label">密码：</label>
-      <input type="password" name="userPassword" placeholder="输入6-16位不含空格的密码" />
-    </view>
-    <view class="section">
-      <button class="loginBtn" loading="{{loading}}" disabled="{{disabled}}" form-type="submit">登录</button>
-    </view>
+    <form class="loginForm" bindsubmit="formSubmit">
+      <view class="row">
+        <!--<text>用户名：</text>-->
+        <label class="label">用户名：</label>
+        <input type="text" name="userName" placeholder="输入账号/手机号" />
+      </view>
+      <view class="row">
+        <!--<text>密码：</text>-->
+        <label class="label">密码：</label>
+        <input type="text" password="true" name="userPassword" placeholder="输入6-16位不含空格的密码" />
+      </view>
+      <view class="section">
+        <button class="loginBtn" loading="{{loading}}" disabled="{{disabled}}" form-type="submit">登录</button>
+      </view>
     </form>
   </view>
 
@@ -31,6 +31,5 @@
   </view>
 
   <view>
-</view>
-
+  </view>
 </view>

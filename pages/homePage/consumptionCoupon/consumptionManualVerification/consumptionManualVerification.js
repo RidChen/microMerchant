@@ -169,23 +169,26 @@ Page({
           }
 
           if ('000000' == model.code) {
-
+            wx.navigateTo({
+              url: root + 'pages/homePage/consumptionCoupon/consumptionConfirm/consumptionConfirm' +
+              "?status=" + model.data.status +
+              "&&orderCode=" + model.data.orderCode +
+              "&&consumerCode=" + model.data.consumerCode +
+              "&&buyTime=" + model.data.buyTime +
+              "&&consumeId=" + model.data.consumeId +
+              "&&orderUserId" + model.data.orderUserId +
+              "&&prdName=" + model.data.prdName +
+              "&&prdNum=" + model.data.prdNum +
+              "&&totalPrice=" + model.data.totalPrice +
+              "&&mobile=" + model.data.mobile
+            })
           } else {
-
             wx.showModal({
               title: '',
               content: model.msg,
               showCancel: false
             })
           }
-        },
-        fail: function (res) {
-          console.log(res)
-          wx.showToast({
-            title: '网络异常',
-            image: root + 'resource/common/gb@2x.png',
-            duration: 2000
-          })
         },
         complete: function (res) {
           wx.hideLoading()

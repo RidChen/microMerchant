@@ -60,7 +60,7 @@
 
 /* common table for goods list, consume coupon list, discount coupon list*/
 
-.orderTable {
+.scrollTable {
   width: 100%;
   min-height: 50vh;
 }
@@ -134,7 +134,7 @@
   align-items: flex-end;
 }
 
-.verticalGraySeperationLine{
+.verticalGraySeperationLine {
   width: 2%;
   height: 40%;
   margin-top: 80rpx;
@@ -218,6 +218,7 @@
 }
 
 /* manual verification */
+
 .inputArea {
   height: 200rpx;
   width: 90%;
@@ -295,6 +296,7 @@
 }
 
 /* discount coupon table */
+
 .discountTableCellLeft {
   display: flex;
   width: 70%;

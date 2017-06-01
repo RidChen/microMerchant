@@ -1,0 +1,80 @@
+<!--consumptionConfirm.wxml-->
+<view class="consumptionConfirmPage">
+  <view class="detailsContainer">
+    <view class="detailsTitle">
+      <label>消费券信息</label>
+    </view>
+    <view class="separationLine"></view>
+
+    <view class="detailsCell">
+      <view class="detailsSubTitle">消费状态： </view>
+      <view class="detailsInfo">
+        <label>{{status}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+  </view>
+  <view class="detailsContainer">
+    <view class="detailsTitle">
+      <label>订单信息</label>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>订单编号：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{orderCode}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>商品名称：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{prdName}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>用户手机号：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{mobile}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>付款时间：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{buyTime}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>商品数量：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{prdNum}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>商品总价：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{totalPrice}}</label>
+      </view>
+    </view>
+  </view>
+
+  <view class="confirmButtonArea">
+    <button class="confirmButton" bindtap="tapConfirmButton" disabled="{{btnDisabled}}">确认使用</button>
+  </view>
+</view>

@@ -178,9 +178,6 @@ Page({
           _this.data.accountInfo = {}
         }
       },
-      fail: function (res) {
-        console.log(res)
-      },
       complete: function (res) {
         wx.hideLoading()
       }

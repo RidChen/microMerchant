@@ -103,11 +103,9 @@ Page({
           })
         }
       },
-      fail: function (res) {
-        console.log(res)
-      },
       complete: function (res) {
         wx.hideLoading()
+        // wx.stopPullDownRefresh()
 
         if (_this.data.modelDataList != null) {
           _this.data.barButtons[0].count = _this.data.modelDataList.stateDescription.waitPayNum
@@ -230,10 +228,6 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  orderTableScroll: function (e) {
-    console.log(e)
   },
 
   tapHandler: function (event) {

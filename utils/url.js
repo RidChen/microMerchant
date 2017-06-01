@@ -53,6 +53,7 @@ module.exports = {
   urlGetAppVersion: 'sys/getAppVersion',
   urlLogin: 'login/login',
   urlAutoLogin: 'login/appAutoLogin',
+  urlLogout: 'login/appLogout',
   urlGetGoodsOrderList: 'store/order/getOrderList',
   urlGetOrderDetails: 'store/order/getOrderDetails',
   urlgetLogisticsList: 'store/order/getLogisticsList',
@@ -66,4 +67,6 @@ module.exports = {
   urlGetListByType: 'store/coupon/getListByType',
   urlGetCouponInfo: 'store/coupon/getCouponInfo',
   urlGetListByStatus: 'store/coupon/getListByStatus',
+  urlUseConsumCoupon: 'store/consume/useConsumeVolume',
+  urlUseDiscountCoupon: 'store/coupon/useCouponVolume'
 }

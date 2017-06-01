@@ -50,7 +50,7 @@ Page({
       couponStatus: options.status
     })
 
-    this.getDiscountInfo(1, options.status)
+    this.getDiscountCouponInfo(1, options.couponId, options.status)
   },
 
   /**
@@ -102,14 +102,15 @@ Page({
   
   },
 
-  getDiscountInfo: function (pageNum, couponType) {
+  getDiscountCouponInfo: function (pageNum, couponId, couponStatus) {
     this.data.pageNum = pageNum <= this.data.totalPage ? pageNum : 1
 
     var params = URL.getSYSTEM();
 
     params["pageNum"] = "" + this.data.pageNum
     params["pageSize"] = "" + 20
-    params["couponType"] = "" + couponType
+    params["couponStatus"] = couponStatus
+    params["couponId"] = couponId
 
     wx.showLoading({
       title: '',
@@ -118,7 +119,7 @@ Page({
 
     var _this = this
     networkManager.post({
-      url: URL.init(URL.urlRoot, URL.urlGetListByType).getURL(app.globalData.wsjUserInfo.token),
+      url: URL.init(URL.urlRoot, URL.urlGetListByStatus).getURL(app.globalData.wsjUserInfo.token),
       data: params,
       success: function (res) {
         var model = JSON.parse(res.data)
@@ -131,8 +132,8 @@ Page({
 
         if ('000000' == model.code) {
           _this.data.totalPage = parseInt(model.data.totalPage)
-          _this.data.barButtons[0].count = model.data.typeDescription.storeNum
-          _this.data.barButtons[1].count = model.data.typeDescription.lineNum
+          _this.data.barButtons[0].count = model.data.stateDescription.noUsecouPonNum
+          _this.data.barButtons[1].count = model.data.stateDescription.lapsedNum
 
           var footer = (_this.data.pageNum == _this.data.totalPage) ? '加载完成' : '正在加载更多数据...'
 
@@ -141,14 +142,14 @@ Page({
               barButtons: _this.data.barButtons,
               tableData: {
                 root: root,
-                dataList: model.data.couponList,
+                dataList: model.data.userCouponList,
                 scrollTop: 0,
                 footerText: footer
               }
             })
           } else {
-            if (model.data.consumeList != undefined) {
-              _this.data.tableData.dataList = _this.data.tableData.dataList.concat(model.data.couponList)
+            if (model.data.userCouponList != undefined) {
+              _this.data.tableData.dataList = _this.data.tableData.dataList.concat(model.data.userCouponList)
               _this.setData({
                 barButtons: _this.data.barButtons,
                 tableData: {
@@ -168,16 +169,9 @@ Page({
           })
         }
       },
-      fail: function (res) {
-        console.log(res)
-        wx.showToast({
-          title: '网络异常',
-          image: root + 'resource/common/gb@2x.png',
-          duration: 2000
-        })
-      },
       complete: function (res) {
         wx.hideLoading()
+        // wx.stopPullDownRefresh()
       }
     })
   },
@@ -194,11 +188,11 @@ Page({
     var status = ''
 
     switch (event.currentTarget.id) {
-      case 'onlineShop':
+      case 'unused':
         status = '0'
         break
 
-      case 'offlineShop':
+      case 'invalid':
         status = '1'
         break
 
@@ -218,17 +212,17 @@ Page({
       this.data.currentPageStatus = status;
 
       this.setData({
-        barButtons: this.data.barButtons
+        barButtons: this.data.barButtons,
       })
 
-      this.getDiscountInfo(1, status)
+      this.getDiscountCouponInfo(1, this.data.couponId, status)
     }
   },
 
   tapNoDataHandler: function (event) {
     console.log(event.currentTarget.id)
 
-    this.getDiscountInfo(1, this.data.currentPageStatus)
+    this.getDiscountCouponInfo(1, this.data.couponId, this.data.currentPageStatus)
   },
 
   tapScanButton: function (event) {
@@ -277,14 +271,6 @@ Page({
                   })
                 }
               },
-              fail: function (res) {
-                console.log(res)
-                wx.showToast({
-                  title: '网络异常',
-                  image: root + 'resource/common/gb@2x.png',
-                  duration: 2000
-                })
-              },
               complete: function (res) {
                 wx.hideLoading()
               }
@@ -296,7 +282,6 @@ Page({
               content: '此二维码错误，不能接待。请与消费者确认提供的二维码是否正确'
             })
           }
-
         } else {
           wx.showModal({
             title: '',
@@ -307,4 +292,24 @@ Page({
       }
     })
   },
+
+  tapContactHandler: function (event) {
+    console.log('tap contact button' + event.currentTarget.id)
+
+    if (this.data.tableData.dataList[event.currentTarget.id].userMobile != undefined) {
+      wx.makePhoneCall({
+        phoneNumber: this.data.tableData.dataList[event.currentTarget.id].userMobile,
+      })
+    }
+  },
+
+  tapVerificationButton: function (event) {
+    wx.navigateTo({
+      url: root + 'pages/homePage/discountCoupon/discountManualVerification/discountManualVerification',
+    })
+  },
+
+  tapCellHandler: function(event) {
+    
+  }
 })

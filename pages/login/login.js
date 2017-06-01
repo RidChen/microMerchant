@@ -3,6 +3,7 @@ var root = '../../'
 var util = require(root + 'utils/util')
 var URL = require(root + 'utils/url')
 var networkManager = require(root + 'utils/networkManager')
+var encryption = require(root + 'utils/des')
 var app = getApp()
 
 Page({
@@ -15,7 +16,11 @@ Page({
     bgImage: root + 'resource/login/beijing@2x.png',
     toastText: '',
     loading: false,
-    disabled: false
+    disabled: false,
+    //秘钥
+    key: '123456789012345678901234',
+    //向量
+    iv: '01234567'
   },
 
   /**
@@ -105,7 +110,7 @@ Page({
         url: URL.init(URL.urlRoot, URL.urlLogin).getURL(null),
         data: {
           'username': objData.userName,
-          'password': (objData.userPassword == '111111' ? 'vh8oqIuIQOU=' : objData.userPassword)
+          'password': encryption.base64encode(encryption.des(this.data.key, objData.userPassword, 1, 1, this.data.iv, 1))
         },
         success: function (res) {
           // console.log(util.obj2string(res.data))
@@ -118,18 +123,7 @@ Page({
               mask: true,
               complete: function (res) {
                 wx.switchTab({
-                  url: root + 'pages/homePage/homePage',
-                  success: function (res) {
-                    // success
-                    console.log('成功');
-                  },
-                  fail: function () {
-                    // fail
-                    console.log('失败');
-                  },
-                  complete: function () {
-                    // complete
-                  }
+                  url: root + 'pages/homePage/homePage'
                 })
               }
             })
@@ -147,15 +141,6 @@ Page({
               mask: true,
             })
           }
-        },
-        fail: function (res) {
-          console.log(res)
-          wx.showToast({
-            title: '网络异常',
-            image: root + 'resource/common/gb@2x.png',
-            duration: 2000,
-            mask: true,
-          })
         },
         complete: function (res) {
           _this.setData({

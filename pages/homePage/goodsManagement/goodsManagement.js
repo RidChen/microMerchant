@@ -152,12 +152,9 @@ Page({
           })
         }
       },
-      fail: function (res) {
-
-      },
       complete: function (res) {
         wx.hideLoading()
-        wx.stopPullDownRefresh()
+        // wx.stopPullDownRefresh()
       }
     })
   }

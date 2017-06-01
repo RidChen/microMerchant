@@ -162,16 +162,9 @@ Page({
           })
         }
       },
-      fail: function (res) {
-        console.log(res)
-        wx.showToast({
-          title: '网络异常',
-          image: root + 'resource/common/gb@2x.png',
-          duration: 2000
-        })
-      },
       complete: function (res) {
         wx.hideLoading()
+        // wx.stopPullDownRefresh()
       }
     })
   },
@@ -261,23 +254,21 @@ Page({
                 }
 
                 if ('000000' == model.code) {
-
+                  wx.navigateTo({
+                    url: root + 'pages/homePage/discountCoupon/discountConfirm/discountConfirm' +
+                    '?couponCode=' + model.data.couponCode +
+                    '&&couponName=' + model.data.couponName +
+                    '&&couponStatus=' + model.data.couponStatus +
+                    '&&userCouponId=' + model.data.userCouponId +
+                    '&&userMobile=' + model.data.userMobile
+                  })
                 } else {
-
                   wx.showModal({
                     title: '',
                     content: model.msg,
                     showCancel: false
                   })
                 }
-              },
-              fail: function (res) {
-                console.log(res)
-                wx.showToast({
-                  title: '网络异常',
-                  image: root + 'resource/common/gb@2x.png',
-                  duration: 2000
-                })
               },
               complete: function (res) {
                 wx.hideLoading()

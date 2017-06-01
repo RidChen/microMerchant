@@ -49,15 +49,17 @@ Page({
       console.log(app.globalData.wsjUserInfo)
     }
 
-    var wsjUserInfo = app.globalData.wsjUserInfo
-    if (wsjUserInfo != undefined) {
-      for (var index = 0; index < this.data.items.count; index++) {
-        if (Array.contains(wsjUserInfo, this.data.items[index].auth)) {
-          this.setData({
-            hidden: !this.hidden
-          })
+    if (app.globalData.wsjUserInfo != undefined) {
+      for (var i = 0; i < this.data.items.length; i++) {
+        for (var j = 0; j < app.globalData.wsjUserInfo.auth.length; j++) {
+          if (this.data.items[i].auth == app.globalData.wsjUserInfo.auth[j]) {
+            this.data.items[i].hidden = false
+          }
         }
       }
+      this.setData({
+        items: this.data.items
+      })
     }
   },
 

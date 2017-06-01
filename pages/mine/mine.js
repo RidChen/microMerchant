@@ -72,5 +72,47 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  tapLogoutButton: function(e) {
+    wx.showModal({
+      title: '',
+      content: '确认退出登录',
+      success: function(res) {
+        if (res.confirm) {
+          var _this = this
+          networkManager.post({
+            url: URL.init(URL.urlRoot, URL.urlLogout).getURL(app.globalData.wsjUserInfo.token),
+            data: URL.getSYSTEM(),
+            success: function (res) {
+              var model = JSON.parse(res.data)
+              if ('000000' == model.code) {
+                app.globalData.wsjUserInfo = null
+                // delete user data
+                wx.removeStorageSync('wsjUserInfo')
+                wx.showToast({
+                  title: model.msg,
+                  icon: 'success',
+                  duration: 2000,
+                  mask: true,
+                  complete: function (res) {
+                    wx.redirectTo({
+                      url: root + 'pages/login/login',
+                    })
+                  }
+                })
+              } else {
+                wx.showToast({
+                  title: model.msg,
+                  image: root + 'resource/common/gb@2x.png',
+                  duration: 2000,
+                  mask: true,
+                })
+              }
+            },
+          })
+        }
+      }
+    })
   }
 })

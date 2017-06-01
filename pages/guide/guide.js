@@ -56,18 +56,7 @@ Page({
             var model = JSON.parse(res.data)
             if ('000000' == model.code) {
               wx.switchTab({
-                url: root + 'pages/homePage/homePage',
-                success: function (res) {
-                  // success
-                  console.log('成功');
-                },
-                fail: function () {
-                  // fail
-                  console.log('失败');
-                },
-                complete: function () {
-                  // complete
-                }
+                url: root + 'pages/homePage/homePage'
               })
             } else {
               wx.showToast({
@@ -79,9 +68,6 @@ Page({
                 url: root + 'pages/login/login',
               })
             }
-          },
-          fail: function (res) {
-            console.log(res)
           },
           complete: function (res) {
             _this.setData({

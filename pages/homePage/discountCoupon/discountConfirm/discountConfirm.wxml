@@ -1,0 +1,41 @@
+<!--discountConfirm.wxml-->
+<view class="discountConfirmPage">
+  <view class="detailsContainer">
+    <view class="detailsTitle">
+      <label>优惠券信息</label>
+    </view>
+    <view class="separationLine"></view>
+
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>优惠券名称：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{couponName}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>优惠券状态：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{couponStatus}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+    <view class="detailsCell">
+      <view class="detailsSubTitle">
+        <text>用户联系方式：</text>
+      </view>
+      <view class="detailsInfo">
+        <label>{{userMobile}}</label>
+      </view>
+    </view>
+    <view class="separationLine"></view>
+  </view>
+
+  <view class="confirmButtonArea">
+    <button class="confirmButton" bindtap="tapConfirmButton" disabled="{{btnDisabled}}">确认使用</button>
+  </view>
+</view>

@@ -1,3 +1,6 @@
+var root = '../'
+var app = getApp()
+
 function post(params) {
   wx.request({
     url: params.url,
@@ -9,11 +12,35 @@ function post(params) {
       if (params.success != undefined) {
         params.success(res)
       }
+      var model = JSON.parse(res.data)
+
+      if (model.code == '000002') {
+        // token失效
+        wx.showModal({
+          title: '',
+          content: '账号在另一设备上被注销，请重新登录',
+          showCancel: false,
+          success: function (res) {
+            app.globalData.wsjUserInfo = null
+            // delete user data
+            wx.removeStorageSync('wsjUserInfo')
+            wx.redirectTo({
+              url: root + 'pages/login/login',
+            })
+          }
+        })
+      }
     },
     fail: function (res) {
       if (params.fail != undefined) {
         params.fail(res)
       }
+
+      wx.showModal({
+        title: '',
+        showCancel: false,
+        content: '网络异常，请稍后重试',
+      })
     },
     complete: function (res) {
       if (params.complete != undefined) {

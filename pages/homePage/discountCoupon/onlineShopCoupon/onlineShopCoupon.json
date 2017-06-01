@@ -1,5 +1,6 @@
 {
   "navigationBarBackgroundColor": "#ed761c",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "网店优惠券"
+  "navigationBarTitleText": "网店优惠券",
+  "backgroundColor": "#f5f5f9"
 }

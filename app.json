@@ -14,7 +14,9 @@
     "pages/homePage/goodsManagement/editGoodsInfo/editGoodsInfo",
     "pages/homePage/consumptionCoupon/consumptionManualVerification/consumptionManualVerification",
     "pages/homePage/discountCoupon/discountManualVerification/discountManualVerification",
-    "pages/homePage/discountCoupon/onlineShopCoupon/onlineShopCoupon"
+    "pages/homePage/discountCoupon/onlineShopCoupon/onlineShopCoupon",
+    "pages/homePage/consumptionCoupon/consumptionConfirm/consumptionConfirm",
+    "pages/homePage/discountCoupon/discountConfirm/discountConfirm"
   ],
   "window": {
     "backgroundTextStyle": "light",

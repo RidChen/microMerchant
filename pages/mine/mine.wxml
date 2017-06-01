@@ -2,6 +2,6 @@
 <view class="minePage">
   <view class="mineView">
     <label class="label">当前账户：{{name}}</label>
-    <button class="logoutBtn" form-type="submit">退出登录</button>
+    <button class="logoutBtn" bindtap="tapLogoutButton">退出登录</button>
   </view>
 </view>
