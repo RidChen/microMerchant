@@ -141,7 +141,7 @@ Page({
               }
             })
           } else {
-            if (model.data.consumeList != undefined) {
+            if (model.data.couponList != undefined) {
               _this.data.tableData.dataList = _this.data.tableData.dataList.concat(model.data.couponList)
               _this.setData({
                 barButtons: _this.data.barButtons,

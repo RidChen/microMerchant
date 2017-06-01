@@ -165,7 +165,6 @@ Page({
             var params = URL.getSYSTEM();
 
             params["consumeCode"] = result.code
-            // params['type'] = result.type
 
             wx.showLoading({
               title: '',

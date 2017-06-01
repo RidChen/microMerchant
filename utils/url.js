@@ -48,7 +48,8 @@ module.exports = {
   init: init,
   getSYSTEM: getSYSTEM,
 
-  urlRoot: 'http://172.31.60.189/wsj/m',
+  // urlRoot: 'http://172.31.60.189/wsj/m',
+  urlRoot: 'http://www.jointem.com/wsj/m/',
 
   urlGetAppVersion: 'sys/getAppVersion',
   urlLogin: 'login/login',
