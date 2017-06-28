@@ -1,4 +1,3 @@
-var root = '../'
 var app = getApp()
 
 function post(params) {
@@ -24,8 +23,19 @@ function post(params) {
             app.globalData.wsjUserInfo = null
             // delete user data
             wx.removeStorageSync('wsjUserInfo')
+
+            var root = ''
+            var pages = getCurrentPages()
+            if (pages.length > 0) {
+              console.log(pages[pages.length - 1].route)
+              var paths = pages[pages.length - 1].route.split('\/')
+              for (var i = 1; i< paths.length; i++) {
+                root += '../'
+              }
+            }
+
             wx.redirectTo({
-              url: root + 'pages/login/login',
+                url: root + 'pages/login/login',
             })
           }
         })

@@ -107,7 +107,7 @@ Page({
 
       var _this = this
       networkManager.post({
-        url: URL.init(URL.urlRoot, URL.urlLogin).getURL(null),
+        url: URL.init(URL.urlRoot, URL.urlLogin).getURL(),
         data: {
           'username': objData.userName,
           'password': encryption.base64encode(encryption.des(this.data.key, objData.userPassword, 1, 1, this.data.iv, 1))

@@ -38,45 +38,72 @@ Page({
     //   animationData: animation.export()
     // })
 
-    setTimeout(function(){
-      if (app.globalData.wsjUserInfo == undefined || app.globalData.wsjUserInfo == "") {
-        wx.navigateTo({
-          url: root + 'pages/login/login',
-        })
-      } else {
-        console.log(util.obj2string(app.globalData.wsjUserInfo))
+    var params = {
+      "sig": "000000000",
+      "systemVersion": "10.3.1",
+      "currentVersion": "1.1.0",
+      "inteVersion": "1.2.3",
+      "imei": "06B69882-8F8F-42EA-B025-B87016412E64",
+      "model": "iPhone Simulator",
+      "system": "2"
+    }
 
-        var params = URL.getSYSTEM()
+    networkManager.post({
+      url: URL.init(URL.urlRoot, URL.urlGetConfig).getURL(),
+      data: params,
+      success: function (res) {
+        var model = JSON.parse(res.data)
+        if ('000000' == model.code) {
+          URL.urlRoot = model.data.url + '/wsj'
 
-        networkManager.post({
-          url: URL.init(URL.urlRoot, URL.urlAutoLogin).getURL(app.globalData.wsjUserInfo.token),
-          data: params,
-          success: function (res) {
-            // console.log(util.obj2string(res.data))
-            var model = JSON.parse(res.data)
-            if ('000000' == model.code) {
-              wx.switchTab({
-                url: root + 'pages/homePage/homePage'
-              })
-            } else {
-              wx.showToast({
-                title: model.msg,
-                image: root + 'resource/common/gb@2x.png',
-                duration: 2000
-              })
+          setTimeout(function () {
+            if (app.globalData.wsjUserInfo == undefined || app.globalData.wsjUserInfo == "") {
               wx.navigateTo({
                 url: root + 'pages/login/login',
               })
+            } else {
+              console.log(util.obj2string(app.globalData.wsjUserInfo))
+
+              var params = URL.getSYSTEM()
+
+              networkManager.post({
+                url: URL.init(URL.urlRoot, URL.urlAutoLogin).getURL(app.globalData.wsjUserInfo.token),
+                data: params,
+                success: function (res) {
+                  // console.log(util.obj2string(res.data))
+                  var model = JSON.parse(res.data)
+                  if ('000000' == model.code) {
+                    wx.switchTab({
+                      url: root + 'pages/homePage/homePage'
+                    })
+                  } else {
+                    wx.showToast({
+                      title: model.msg,
+                      image: root + 'resource/common/gb@2x.png',
+                      duration: 2000
+                    })
+                    wx.navigateTo({
+                      url: root + 'pages/login/login',
+                    })
+                  }
+                },
+                complete: function (res) {
+                  _this.setData({
+                    loading: !_this.data.loading
+                  })
+                },
+              })
             }
-          },
-          complete: function (res) {
-            _this.setData({
-              loading: !_this.data.loading
-            })
-          },
-        })
+          }.bind(this), 1500)
+        } else {
+          wx.showToast({
+            title: model.msg,
+            image: root + 'resource/common/gb@2x.png',
+            duration: 2000
+          })
+        }
       }
-    }.bind(this), 1500)
+    })
   },
 
   /**

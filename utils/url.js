@@ -7,9 +7,9 @@ function init(root, path, version) {
     if (token === undefined) {
       url = root + '/' + path
     } else if (token === null) {
-      url = root + '/' + path + (version == undefined ? '/1.0?token=' : '/' + version + '?token=') + '(null)'
+      url = root + '/' + path + (version == undefined ? '?token=' : '/' + version + '?token=') + '(null)'
     } else {
-      url = root + '/' + path + (version == undefined ? '/1.0?token=' : '/' + version + '?token=') + token
+      url = root + '/' + path + (version == undefined ? '?token=' : '/' + version + '?token=') + token
     }
     return url
   }
@@ -48,26 +48,27 @@ module.exports = {
   init: init,
   getSYSTEM: getSYSTEM,
 
-  // urlRoot: 'http://172.31.60.189/wsj/m',
-  urlRoot: 'http://www.jointem.com/wsj/m/',
+  urlRoot: 'http://www.jointem.com/wsj',
+  urlTestRoot: 'http://172.31.60.189/wsj',
 
+  urlGetConfig: 'public/getConfig',
   urlGetAppVersion: 'sys/getAppVersion',
-  urlLogin: 'login/login',
-  urlAutoLogin: 'login/appAutoLogin',
-  urlLogout: 'login/appLogout',
-  urlGetGoodsOrderList: 'store/order/getOrderList',
-  urlGetOrderDetails: 'store/order/getOrderDetails',
-  urlgetLogisticsList: 'store/order/getLogisticsList',
-  urlSaveLogisticsInfo: 'store/order/saveLogisticsInfo',
-  urlGetReplyList: 'store/order/getReplyList',
-  urlAddReplay: 'store/order/addReply',
-  urlGetGoodsList: 'store/prd/getPrdList',
-  urlUpdateGoodsInfo: 'store/prd/updatePrdInfo',
-  urlGetCousumeList: 'store/consume/getConsumeList',
-  urlValidateConsume: 'store/consume/validateConsume',
-  urlGetListByType: 'store/coupon/getListByType',
-  urlGetCouponInfo: 'store/coupon/getCouponInfo',
-  urlGetListByStatus: 'store/coupon/getListByStatus',
-  urlUseConsumCoupon: 'store/consume/useConsumeVolume',
-  urlUseDiscountCoupon: 'store/coupon/useCouponVolume'
+  urlLogin: 'm/login/login',
+  urlAutoLogin: 'm/login/appAutoLogin',
+  urlLogout: 'm/login/appLogout',
+  urlGetGoodsOrderList: 'm/store/order/getOrderList',
+  urlGetOrderDetails: 'm/store/order/getOrderDetails',
+  urlgetLogisticsList: 'm/store/order/getLogisticsList',
+  urlSaveLogisticsInfo: 'm/store/order/saveLogisticsInfo',
+  urlGetReplyList: 'm/store/order/getReplyList',
+  urlAddReplay: 'm/store/order/addReply',
+  urlGetGoodsList: 'm/store/prd/getPrdList',
+  urlUpdateGoodsInfo: 'm/store/prd/updatePrdInfo',
+  urlGetCousumeList: 'm/store/consume/getConsumeList',
+  urlValidateConsume: 'm/store/consume/validateConsume',
+  urlGetListByType: 'm/store/coupon/getListByType',
+  urlGetCouponInfo: 'm/store/coupon/getCouponInfo',
+  urlGetListByStatus: 'm/store/coupon/getListByStatus',
+  urlUseConsumCoupon: 'm/store/consume/useConsumeVolume',
+  urlUseDiscountCoupon: 'm/store/coupon/useCouponVolume'
 }
