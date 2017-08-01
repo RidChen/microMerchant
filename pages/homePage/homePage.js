@@ -15,7 +15,7 @@ Page({
       {
         id: 'order',
         src: root + 'resource/onlineStore/dingdan@2x.png',
-        auth: 'ROLE_STORE_ORDER',
+        auth: 'ROLE_STORE_TO_STORE_ORDER',
         hidden: true
       },
       {
